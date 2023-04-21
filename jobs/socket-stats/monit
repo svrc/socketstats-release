@@ -1,0 +1,7 @@
+check process socket-stats
+  with pidfile /var/vcap/sys/run/socket-stats/socket-stats.pid
+  start program "/var/vcap/jobs/socket-stats/bin/ctl start"
+  stop program "/var/vcap/jobs/socket-stats/bin/ctl stop"
+  group vcap
+
+

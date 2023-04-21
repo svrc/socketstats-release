@@ -1,0 +1,12 @@
+---
+name: socket-stats
+
+templates:
+  socket.sh.erb: bin/socket.sh
+  socketstats.erb: config/socketstats
+  ctl.erb: bin/ctl
+  pre-start.erb: bin/pre-start
+  
+packages: []
+
+properties: {}

@@ -1,0 +1,10 @@
+#!/bin/bash
+while true; do
+  echo "[`date`] Processes on $HOSTNAME"
+  ps auxw | grep mtx
+  COLUMNS=1000 top -H -n 1 -b -c | grep mtx
+  echo "Socket statistics on $HOSTNAME"
+  ps auxw | grep mtx | awk '{print $2}' | xargs -I{} nsenter -t {}  -n ss -mntp --info
+  sleep 10
+done
+

@@ -1,0 +1,21 @@
+---
+name: socketstats
+
+releases:
+- name: socketstats
+  version: 0+dev.1
+
+addons:
+  - name: socketstats
+    jobs:
+    - name: socket-stats
+      release: socketstats
+
+    include: 
+      jobs:
+      - name: kubelet
+        release: kubo
+      stemcell:
+      - os: ubuntu-xenial
+      - os: ubuntu-bionic
+      - os: ubuntu-jammy

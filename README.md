@@ -23,7 +23,7 @@ bosh upload-release ./dev_releases/socketstats/socketstats-0+dev.1.yml
 ```
 4. Configure the addon from this repo
 ```
-bosh -n update-config --name=socketstats-release --type=runtime ./manifest.yaml
+bosh -n update-config --name=socketstats-release --type=runtime ./socketstats.yaml
 ```
 5. Update your TKGI clusters via the PKS CLI and/or Ops Manager "Apply Pending Changes" button with the TKGI upgrade errand enabled.  This addon will automatically be installed on all worker nodes with the default manifest `pks-watch-tl-manifest.yml`
 

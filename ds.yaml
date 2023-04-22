@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: socket-stats
+  namespace: matrixx-prod-sd01
+  labels:
+    app: socket-stats
+spec:
+  selector:
+    matchLabels:
+      app: socket-stats
+  updateStrategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+  template:
+    metadata:
+      name: socket-stats
+      labels:
+        app: socket-stats
+    spec:
+      nodeSelector:
+        kubernetes.io/os: linux
+      terminationGracePeriodSeconds: 0
+      priorityClassName: system-node-critical
+      volumes:
+      - name: socket-logs
+        hostPath:
+          path: /var/vcap/store/socket-stats
+      containers:
+      - name: socketstats
+        image: bitnami/kubectl:latest
+        command: ["/bin/bash"]
+        args:
+        - "-c"
+        - |
+          sleep infinity
+        volumeMounts:
+        - name: socket-logs
+          mountPath: /socket-logs
+          readOnly: true
+          
+          

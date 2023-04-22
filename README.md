@@ -2,7 +2,7 @@
 
 ## What does this do?
 
-Dumps socket stats for certain processes onto the node.   
+Dumps socket stats for certain processes  onto the node.  Then a DaemonSet is available for reading these logs.    This is not usable for most in its current form, but could be modified for your needs.    Ideally I'll turn this into a Prometheus exporter.
 
 ## How do I install it?
 
@@ -27,5 +27,5 @@ bosh -n update-config --name=socketstats-release --type=runtime ./manifest.yaml
 ```
 5. Update your TKGI clusters via the PKS CLI and/or Ops Manager "Apply Pending Changes" button with the TKGI upgrade errand enabled.  This addon will automatically be installed on all worker nodes with the default manifest `pks-watch-tl-manifest.yml`
 
-
+6. Apply the Daemonset `ds.yaml` to your cluster as one means of reading these logs.
 
